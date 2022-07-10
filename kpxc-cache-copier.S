@@ -8,17 +8,17 @@ S_IFDIR equ 0x04000
 S_IFREG equ 0x10000
 STRUCT_STAT_SIZEOF equ 144 ; stat struct is 144 bytes on x86-64 ?
 
-RETURN_NOTDIR 128
+RETURN_NOTDIR equ 128
 
 section .data
 dirname: db "/home/peter/.cache/keepassxc", 0
 filename: db "/home/peter/.cache/keepassxc/keepassxc.ini", 0
-dir_mode: db 0x1ed ; 755
+dir_mode: dw 0x1ed ; 755
 
 section .bss
 stat_struct: resb STRUCT_STAT_SIZEOF
-section .text
 
+section .text
 ;struct stat {
 ;    dev_t     st_dev;     /* ID of device containing file */
 ;    ino_t     st_ino;     /* inode number */
